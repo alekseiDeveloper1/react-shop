@@ -12,7 +12,7 @@ import {ADMIN_ROUTE, LOGIN_ROUTE} from '../utils/consts'
 const NavBar = observer(() => {
   const {user} = useContext(Context)
   const history = useHistory()
-
+  console.log(user);
   return (
     <Navbar bg="dark" variant=''>
       <Container>
