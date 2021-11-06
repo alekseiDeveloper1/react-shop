@@ -12,7 +12,11 @@ import {ADMIN_ROUTE, LOGIN_ROUTE} from '../utils/consts'
 const NavBar = observer(() => {
   const {user} = useContext(Context)
   const history = useHistory()
-  console.log(user);
+  const logOut = () => {
+    user.setUser({})
+    user.setIsAuth(false)
+  }
+
   return (
     <Navbar bg="dark" variant=''>
       <Container>
@@ -26,19 +30,13 @@ const NavBar = observer(() => {
             <Button 
               variant={'outline-light'} 
               className='ms-4' 
-              onClick={() => {
-                history.push(LOGIN_ROUTE);
-                user.setIsAuth(false);
-              }}
+              onClick={() => logOut()}
             >Выйти</Button>
           </Nav>
         :
           <Nav className="ml-auto" style={{color: 'white'}}>
             <Button variant={'outline-light'} 
-              onClick={() => {
-                user.setIsAuth(true)
-              }}
-            >Авторизация</Button>
+              onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
           </Nav>
         }
       </Container>
